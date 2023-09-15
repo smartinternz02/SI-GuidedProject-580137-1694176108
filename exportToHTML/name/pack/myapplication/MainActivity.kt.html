@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">name.pack.myapplication</span>
+
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import androidx.activity.ComponentActivity</span>
+<span class="s1">import androidx.activity.compose.setContent</span>
+<span class="s1">import androidx.compose.foundation.layout.Arrangement</span>
+<span class="s1">import androidx.compose.foundation.layout.Column</span>
+<span class="s1">import androidx.compose.foundation.layout.fillMaxSize</span>
+<span class="s1">import androidx.compose.foundation.layout.padding</span>
+<span class="s1">import androidx.compose.material3.Button</span>
+<span class="s1">import androidx.compose.material3.ExperimentalMaterial3Api</span>
+<span class="s1">import androidx.compose.material3.Text</span>
+<span class="s1">import androidx.compose.material3.TextField</span>
+<span class="s1">import androidx.compose.runtime.Composable</span>
+<span class="s1">import androidx.compose.runtime.getValue</span>
+<span class="s1">import androidx.compose.runtime.mutableStateOf</span>
+<span class="s1">import androidx.compose.runtime.remember</span>
+<span class="s1">import androidx.compose.runtime.setValue</span>
+<span class="s1">import androidx.compose.ui.Alignment</span>
+<span class="s1">import androidx.compose.ui.Modifier</span>
+<span class="s1">import androidx.compose.ui.tooling.preview.Preview</span>
+<span class="s1">import androidx.compose.ui.unit.dp</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : ComponentActivity() {</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+        <span class="s1">setContent {</span>
+            <span class="s1">Column(</span>
+                <span class="s1">modifier = Modifier.fillMaxSize()</span><span class="s0">,</span>
+                <span class="s1">horizontalAlignment = Alignment.CenterHorizontally</span>
+            <span class="s1">) {</span>
+                <span class="s1">simpleText()</span>
+                <span class="s1">simpleTextField(</span><span class="s2">&quot;User Name&quot;</span><span class="s1">)</span>
+                <span class="s1">simplePasswordField(</span><span class="s2">&quot;Password&quot;</span><span class="s1">)</span>
+                <span class="s1">simpleButton()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">simpleText() {</span>
+    <span class="s1">Text(</span>
+        <span class="s1">text = </span><span class="s2">&quot;Login Page&quot;</span><span class="s0">,</span>
+        <span class="s1">modifier = Modifier.padding(</span><span class="s3">16</span><span class="s1">.dp)</span>
+    <span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s1">@OptIn(ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s1">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">simpleTextField(label: String) {</span>
+    <span class="s0">var </span><span class="s1">text by remember { mutableStateOf(</span><span class="s2">&quot;&quot;</span><span class="s1">) }</span>
+    <span class="s1">TextField(</span>
+        <span class="s1">value = text</span><span class="s0">,</span>
+        <span class="s1">onValueChange = { it -&gt; text = it }</span><span class="s0">,</span>
+        <span class="s1">label = { Text(text = label) }</span>
+    <span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s1">@OptIn(ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s1">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">simplePasswordField(label: String) {</span>
+    <span class="s0">var </span><span class="s1">password by remember { mutableStateOf(</span><span class="s2">&quot;&quot;</span><span class="s1">) }</span>
+    <span class="s1">TextField(</span>
+        <span class="s1">value = password</span><span class="s0">,</span>
+        <span class="s1">onValueChange = { it -&gt; password = it }</span><span class="s0">,</span>
+        <span class="s1">label = { Text(text = label) }</span>
+    <span class="s1">)</span>
+<span class="s1">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">simpleButton() {</span>
+    <span class="s1">Button(modifier = Modifier.padding(</span><span class="s3">16</span><span class="s1">.dp)</span><span class="s0">, </span><span class="s1">onClick = { </span><span class="s4">/*TODO: Handle login logic*/ </span><span class="s1">}) {</span>
+        <span class="s1">Text(text = </span><span class="s2">&quot;Submit&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s1">@Preview</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">LoginPagePreview() {</span>
+    <span class="s1">Column(</span>
+        <span class="s1">modifier = Modifier.fillMaxSize()</span><span class="s0">,</span>
+        <span class="s1">horizontalAlignment = Alignment.CenterHorizontally</span>
+    <span class="s1">) {</span>
+        <span class="s1">simpleText()</span>
+        <span class="s1">simpleTextField(</span><span class="s2">&quot;User Name&quot;</span><span class="s1">)</span>
+        <span class="s1">simplePasswordField(</span><span class="s2">&quot;Password&quot;</span><span class="s1">)</span>
+        <span class="s1">simpleButton()</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
